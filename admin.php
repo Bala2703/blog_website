@@ -1,8 +1,23 @@
+
 <?php
-include "connection.php";
+    include "connection.php";
+
+    $sql = "SELECT * FORM registration WHERE id='$id'";
+
+    $query = mysqli_query($conn , $sql);
+
+    $data = mysqli_fetch_array($query);
 
 
-?>
+    if(isset($_REQUEST['id']))
+    {
+        $id = $_REQUEST['id'];
+
+        $sql =  "SELECT * FROM registration WHERE id = $id";
+        $query  = mysqli_query($conn , $sql);
+
+    }
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,42 +26,24 @@ include "connection.php";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
     <title>Document</title>
 </head>
 
 <body>
 
 
-    <?php
+    <div method="GET" class="jumbotron jumbotron-fluid">
+        <div class="container" >
+            <h1  class="display-3">HI,</h1>
+            <p class="lead">Lorem, ipsum.</p>
+            <hr class="my-2">
+                <a class="btn btn-primary btn-lg" href="listofusers.php" role="button">List of users</a>
+        </div>
+    </div>
 
-    $sql = "SELECT * FROM registration";
-    $result = mysqli_query($conn, $sql);
 
-    if (mysqli_num_rows($result) > 0) { ?>
-        <table>
-            <tr>
-                <td>Id</td>
-                <td>Name</td>
-                <td>Email</td>
-                <td>Role</td>
-                <td>Edit role</td>
-            </tr>
-            <?php
-            while ($row = mysqli_fetch_array($result)) { ?>
-                <tr>
-                    <td><?php echo $row['id'] ?></td>
-                    <td><?php echo $row['name'] ?></td>
-                    <td><?php echo $row['email'] ?></td>
-                    <td><?php echo $row['admin']?></td>
-                    <td><a href="editrole.php?id=<?php echo $row['id']; ?>" >edit</a></td>
-                </tr>
-
-            <?php
-            } ?>
-        </table>
-    <?php } else {
-        echo " No result found";
-    } ?>
 </body>
 
 </html>
