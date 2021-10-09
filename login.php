@@ -6,31 +6,42 @@
     $admin = $_POST['admin'];
     $password = $_POST['password'];
 
-    $sql = "SELECT email , password , admin FROM registration WHERE email = '".$email."' AND  password = '".$password."'";
+    $sql = "SELECT id, email , password , admin FROM registration WHERE email = '".$email."' AND  password = '".$password."'";
 
     $result = mysqli_query($conn , $sql);
+
     if(isset($_REQUEST['login'])){
     if($result)
     {
-        $user_data = mysqli_fetch_assoc($result);
-        if($user_data['email'] === $email)
+      $user_data = mysqli_fetch_assoc($result);
+
+        if($user_data['password'] === $password)
         {
-            $_SESSION['password'] = $user_data['password'];
+          $sqll = "SELECT id FROM registration where email = '$email'";
+          $resultt = mysqli_query($conn, $sqll);
+          while ($row = mysqli_fetch_array($resultt)) {
+            // $_SESSION['email'] = $user_data['email'];
             
             if($user_data['admin'] === 'admin' )
             {
-                header("Location: ./admin.php");
+
+                header("Location: ./admin.php?id=" .$row['id']);
                 die;
             }
             else{
-                header("Location: ./user.php");
+                header("Location: ./user.php?id=" .$row['id']);
                 die;
             }
+          }
+
         }
+
         else{
-            echo "Invaild email or password";
+          echo "Invaild email or password";
         }
-    }
+
+      }
+
 }
 
 ?>

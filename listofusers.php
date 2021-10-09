@@ -49,7 +49,7 @@ if (mysqli_num_rows($result) > 0) { ?>
                 <td><?php echo $row['name'] ?></td>
                 <td><?php echo $row['email'] ?></td>
                 <td><?php echo $row['admin']?></td>
-                <td><a href="editrole.php?id=<?php echo $row['id']; ?>" >edit</a></td>
+                <td><a href="edit.php?id=<?php echo $row['id']; ?>" >edit</a></td>
             </tr>
 
         <?php

@@ -36,10 +36,14 @@
 
     <div method="GET" class="jumbotron jumbotron-fluid">
         <div class="container" >
-            <h1  class="display-3">HI,</h1>
+            <h1  class="display-3">HI,<?php 
+            
+            foreach($query as $q){
+            echo $q['name']?></h1>
             <p class="lead">Lorem, ipsum.</p>
             <hr class="my-2">
                 <a class="btn btn-primary btn-lg" href="listofusers.php" role="button">List of users</a>
+           <?php }?>
         </div>
     </div>
 
