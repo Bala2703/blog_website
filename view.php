@@ -15,17 +15,22 @@ include "logic.php"
 
 <body>
 
-   <div class="container mt-5">
 
         <?php foreach ($query as $q) 
         {?>
-            <div class="bg-dark p-5 rounded-lg text-white text-center" > 
-                <h1>
-                    <?php echo $q['title']; ?>
-                </h1> 
+
+            <div class="p-5 rounded-lg text-black text-center" style="justify-content:center;align-items:center;text-align:center" > 
+                <div class="jumbotron" style="background-size:cover;">
+            <img src="<?php echo $q['img_path']?>" alt=""  >
+            <br>
+            
                 <h2>
+                   <br> <?php echo $q['title']; ?>
+                </h2> 
+                <br>
+                <h4 style="width: 50%;margin-left:25%">
                     <?php echo $q['description']?>
-                </h2>
+                </h4>
                 <div class="d-flex mt-2 justify-content-center align-items-center">
                     <a class="btn btn-light btn-sm"  href="editblog.php?id=<?php echo $q['id']; ?>">Edit</a>
 
@@ -35,14 +40,13 @@ include "logic.php"
                     </form>
 
                 </div>
-
+                </div>
             </div>
                 <p class="mt-5 border-left border-dark pl-4 " >
                     <?php echo $q['content']; ?>
                 </p>
        <?php }?>
 
-   </div>
 
     <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

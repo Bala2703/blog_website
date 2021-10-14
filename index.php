@@ -21,8 +21,8 @@ $query = mysqli_query($conn, $sql);
   <title>Blogging</title>
 </head>
 
-<body >
-  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light" >
     <a class="navbar-brand" href="#">Blogging</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -45,63 +45,66 @@ $query = mysqli_query($conn, $sql);
       </form>
     </div>
   </nav>
-  <!-- <div class="row">
+  <div class="card-columns" style="margin-top: 10px;
+  margin-left:5px;
+  gap:10px">
     <?php foreach ($query as $q) { ?>
-      <div class="col-12 col-lg-4 d-flex justify-content-center">
-        <div class="card mt-5" style="width:90%;">
-          <img class="card-img-top" src="/uploads/profile.png" alt="Card image cap">
+      <div class="card">
+        <div class="card-body">
+          <img src="<?php echo $q['img_path']?>" class="card-img-top" alt="...  ">
           <div class="card-body">
-            <h5 class="card-title"><?php echo $q["title"]; ?></h5>
+            <h5 class="card-title"> <?php echo $q["title"]; ?></h5>
             <p class="card-text"><?php echo $q['description']; ?></p>
-            <a href="view.php?id=<?php echo $q['id'] ?>" class="btn btn-primary">Read More</a>
+            <a href="view.php?id=<?php echo $q['id'] ?>" style="font-size: 1.2rem; font-weight:900" class="btn btn-primary">Read More</a>
           </div>
         </div>
+
       </div>
     <?php } ?>
-  </div> -->
-  <div class="roww">
-  <?php foreach ($query as $q) { ?>
-      <div class="card">
 
+  </div>
 
-      <div class="container">
-
-      <h2  class="card-title"><?php echo $q["title"]; ?></h2>
-      <p class="card-text"><?php echo $q['description']; ?></p>
-      <a href="view.php?id=<?php echo $q['id'] ?>" style="font-size: 1.2rem; font-weight:900" class="btn btn-primary">Read More</a>
-      </div>
-      </div>
- <?php }?>
-    </div>
 </body>
+
 </html>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;1,500&display=swap'); 
-.roww{
-  flex-direction:row ;
-  display: flex;
-  gap: 5px;
-  margin-top: 10px;
-} 
-.card{
-   flex-direction: row;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-   transition: 0.3s;
-   width: 30%;
-   font-family: poppins , sans-serif;
-}
-.card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-}
-.card-title{
-  font-weight: 600;
-  font-size: 2rem;
-}
-.card-text{
-  font-weight: 700;
-}
-.container {
-  padding: 15px 16px;
-}
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;1,500&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&display=swap');
+
+  .card {
+    transition: 0.5s;
+    border-radius: 10px;
+    font-family: poppins, sans-serif;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .card-title {
+    font-family: lora, serif;
+    font-weight: 600;
+    font-size: 1.8rem;
+  }
+
+  .card-text {
+    font-weight: 700;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  .card-img-top {
+    border-radius: 5px 5px 0 0;
+  }
+
+  .container {
+    padding: 15px 16px;
+  }
 </style>
+
