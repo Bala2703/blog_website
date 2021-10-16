@@ -51,7 +51,9 @@
     </div>
 
     <div style="display:none" id="blog" class="container mt-5">
-        <form method="GET" action="createblog.php">
+        <form method="POST" action="createblog.php" enctype="multipart/form-data">
+        <input type="text" placeholder="Enter image name" name="img-name" class="tb" />
+                <input type="file" name="fileImg" class="file_input" />
             <input type="text" name="title" placeholder="Title of the Blog" class="form-control bg-dark text-white my-3 text-center" >
             <textarea name="description" placeholder="Desription" class="form-control bg-dark text-white my-3"maxlength="100" ></textarea>
             <textarea name="content" placeholder="Content of the Blog" class="form-control bg-dark text-white my-3" > </textarea>
